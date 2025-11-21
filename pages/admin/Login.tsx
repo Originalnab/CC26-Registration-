@@ -29,42 +29,45 @@ export const Login: React.FC = () => {
     setLoading(false);
   };
 
+  const inputClass = "w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md px-3 py-2 focus:ring-indigo-500 focus:border-indigo-500";
+  const labelClass = "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1";
+
   return (
     <Layout>
       <div className="flex justify-center items-center min-h-[60vh]">
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md border-t-4 border-indigo-600">
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md border-t-4 border-indigo-600 transition-colors">
           <div className="flex justify-center mb-6">
-            <div className="bg-indigo-100 p-3 rounded-full">
-               <LucideLock className="text-indigo-600" size={32} />
+            <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full">
+               <LucideLock className="text-indigo-600 dark:text-indigo-400" size={32} />
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Admin Login</h2>
+          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-white">Admin Login</h2>
           
           {error && (
-            <div className="bg-red-50 text-red-700 p-3 rounded mb-4 text-sm border border-red-200">
+            <div className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 p-3 rounded mb-4 text-sm border border-red-200 dark:border-red-800">
               {error}
             </div>
           )}
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <label className={labelClass}>Email</label>
               <input 
                 type="email" 
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className={inputClass}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+              <label className={labelClass}>Password</label>
               <input 
                 type="password" 
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className={inputClass}
               />
             </div>
             <button 

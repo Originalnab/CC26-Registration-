@@ -8,28 +8,31 @@ import { Registrations } from './pages/admin/Registrations';
 import { Ministries } from './pages/admin/Ministries';
 import { Regions } from './pages/admin/Regions';
 import { FormFields } from './pages/admin/FormFields';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<RegistrationForm />} />
-        <Route path="/my-referrals" element={<CheckReferrals />} />
+    <ThemeProvider>
+      <HashRouter>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<RegistrationForm />} />
+          <Route path="/my-referrals" element={<CheckReferrals />} />
 
-        {/* Admin Login */}
-        <Route path="/admin/login" element={<Login />} />
+          {/* Admin Login */}
+          <Route path="/admin/login" element={<Login />} />
 
-        {/* Protected Admin Routes */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Navigate to="registrations" replace />} />
-          <Route path="registrations" element={<Registrations />} />
-          <Route path="ministries" element={<Ministries />} />
-          <Route path="regions" element={<Regions />} />
-          <Route path="form-fields" element={<FormFields />} />
-        </Route>
-      </Routes>
-    </HashRouter>
+          {/* Protected Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="registrations" replace />} />
+            <Route path="registrations" element={<Registrations />} />
+            <Route path="ministries" element={<Ministries />} />
+            <Route path="regions" element={<Regions />} />
+            <Route path="form-fields" element={<FormFields />} />
+          </Route>
+        </Routes>
+      </HashRouter>
+    </ThemeProvider>
   );
 };
 

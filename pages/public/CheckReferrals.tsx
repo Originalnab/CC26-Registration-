@@ -34,28 +34,30 @@ export const CheckReferrals: React.FC = () => {
     setLoading(false);
   };
 
+  const inputClass = "flex-1 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500";
+
   return (
     <Layout>
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white shadow rounded-lg p-6 mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+        <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6 mb-8 transition-colors">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <LucideUsers /> Check My Referrals
           </h1>
-          <p className="text-gray-600 mb-6">Enter the email address you used as the "Referrer" to see who you have registered.</p>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">Enter the email address you used as the "Referrer" to see who you have registered.</p>
           
-          <form onSubmit={handleCheck} className="flex gap-4">
+          <form onSubmit={handleCheck} className="flex flex-col sm:flex-row gap-4">
             <input 
               type="email" 
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your referrer email"
-              className="flex-1 border border-gray-300 rounded-md px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className={inputClass}
             />
             <button 
               type="submit" 
               disabled={loading}
-              className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition flex items-center gap-2"
+              className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition flex items-center justify-center gap-2"
             >
               {loading ? 'Checking...' : <><LucideSearch size={18} /> Check</>}
             </button>
@@ -73,31 +75,31 @@ export const CheckReferrals: React.FC = () => {
 
             {/* List Table */}
             {list.length > 0 ? (
-              <div className="bg-white shadow rounded-lg overflow-hidden">
-                 <div className="px-6 py-4 border-b">
-                   <h3 className="text-lg font-medium text-gray-900">Details</h3>
+              <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden transition-colors">
+                 <div className="px-6 py-4 border-b dark:border-gray-700">
+                   <h3 className="text-lg font-medium text-gray-900 dark:text-white">Details</h3>
                  </div>
                  <div className="overflow-x-auto">
-                   <table className="min-w-full divide-y divide-gray-200">
-                     <thead className="bg-gray-50">
+                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                     <thead className="bg-gray-50 dark:bg-gray-700">
                        <tr>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age Group</th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Region</th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ministry</th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Name</th>
+                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Gender</th>
+                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Age Group</th>
+                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Region</th>
+                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Ministry</th>
+                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Date</th>
                        </tr>
                      </thead>
-                     <tbody className="bg-white divide-y divide-gray-200">
+                     <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                        {list.map((item, idx) => (
-                         <tr key={idx}>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.attendee_name}</td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.gender}</td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.age_group_ministry}</td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.region_name}</td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.ministry_name}</td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                         <tr key={idx} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{item.attendee_name}</td>
+                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{item.gender}</td>
+                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{item.age_group_ministry}</td>
+                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{item.region_name}</td>
+                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{item.ministry_name}</td>
+                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                              {new Date(item.created_at).toLocaleDateString()}
                            </td>
                          </tr>
@@ -107,7 +109,7 @@ export const CheckReferrals: React.FC = () => {
                  </div>
               </div>
             ) : (
-              <div className="bg-white p-8 text-center text-gray-500 rounded-lg border border-dashed border-gray-300">
+              <div className="bg-white dark:bg-gray-800 p-8 text-center text-gray-500 dark:text-gray-400 rounded-lg border border-dashed border-gray-300 dark:border-gray-700 transition-colors">
                 No detailed records found.
               </div>
             )}
