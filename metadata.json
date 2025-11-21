@@ -1,0 +1,5 @@
+{
+  "name": "Christ Conference Registration",
+  "description": "A registration system for Christ Conference featuring public registration with dynamic fields, a referral checking system, and a secured admin dashboard for managing registrations, ministries, and regions.",
+  "requestFramePermissions": []
+}
